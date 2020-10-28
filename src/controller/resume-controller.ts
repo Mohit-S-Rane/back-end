@@ -455,33 +455,34 @@ export class ResumeController {
                 status_code: 422
             })
         }
-        const border ={
+        const border = {
             "top": "24px",
             "right": "24px",
             "bottom": "24px",
             "left": "24px"
         };
-        pdf.create(html, {border:border,format:'A4'}).toBuffer(((err, buffer) => {
+        pdf.create(html, {border: border, format: 'A4'}).toBuffer(((err, buffer) => {
             res.send(buffer);
         }))
     }
 
     static addImage(req: Request, res: Response) {
         const resumeId = req.params.id;
-        const image_url = (req.file as any).location;
+        const image_url = (req.file as any).path;
+        const path = image_url ? 'http://localhost:5000/' + image_url : null
         if (!resumeId) {
             res.status(422).json({
                 message: 'please provide a contact detail id',
                 status_code: 422
             })
         }
-        if (!image_url) {
+        if (!path) {
             res.status(422).json({
                 message: 'please upload an image to proceed',
                 status_code: 422
             })
         }
-        Resume.findOneAndUpdate({_id: resumeId}, {image_url: image_url}, {new: true}).populate(`education skills languages refrences contact_details employment_history 
+        Resume.findOneAndUpdate({_id: resumeId}, {image_url: path}, {new: true}).populate(`education skills languages refrences contact_details employment_history 
         award_achivements interests industrialExposures projectDetails strengths weakness objectives`)
             .then((data) => {
                 res.status(200).send(data)
@@ -1062,42 +1063,22 @@ export class ResumeController {
     }
 
     static deleteImage(req: Request, res: Response) {
-        const imageUrl = req.body.image_url;
         const resumeId = req.params.id;
-        if (!imageUrl) {
-            return res.status(422).json({
-                message: 'please provide a correct fileName',
-                status_code: 422
-            })
-        }
         if (!resumeId) {
             return res.status(422).json({
                 message: 'please provide a correct resume Id',
                 status_code: 422
             })
         }
-        const s3 = new aws.S3();
-        const params = {
-            Bucket: 'resume-pictures',
-            Key: decodeURIComponent(imageUrl)
-        };
-        s3.deleteObject(params, (err, data) => {
-            if (data) {
-                Resume.findOneAndUpdate({_id: resumeId}, {image_url: null}, {new: true}).populate(`education skills languages refrences contact_details employment_history 
+        Resume.findOneAndUpdate({_id: resumeId}, {image_url: null}, {new: true}).populate(`education skills languages refrences contact_details employment_history 
         award_achivements interests industrialExposures projectDetails strengths weakness objectives`)
-                    .then((data) => {
-                        res.status(200).send(data)
-                    }).catch(err => {
-                    res.status(500).send(err)
-                })
-            }
-            else {
-                console.log(err);
-            }
+            .then((data) => {
+                res.status(200).send(data)
+            }).catch(err => {
+            res.status(500).send(err)
         })
     }
 }
-
 
 
 //delete working fine on -
