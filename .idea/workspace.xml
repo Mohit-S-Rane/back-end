@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88f487fb-7bd3-4430-a196-621de38c57a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.dev.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.dev.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +41,22 @@
       <updated>1602700442933</updated>
       <workItem from="1602700444451" duration="19000" />
       <workItem from="1602701770925" duration="71000" />
+      <workItem from="1606852217070" duration="294000" />
+      <workItem from="1607939395415" duration="744000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="297" y="66" width="845" height="768" key="find.popup" timestamp="1607939667023">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="297" y="66" width="845" height="768" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1607939667023" />
+    <state x="217" y="0" width="1005" height="1466" key="search.everywhere.popup" timestamp="1607939410235">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="217" y="0" width="1005" height="1466" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1607939410235" />
   </component>
 </project>

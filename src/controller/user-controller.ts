@@ -1,5 +1,5 @@
 import User from "../models/user";
-import * as bcrypt from "bcrypt";
+const bcrypt = require('bcryptjs');
 import * as jwt from "jsonwebtoken";
 import * as moment from "moment";
 import {Request, Response} from "express";
@@ -163,7 +163,7 @@ export class UserController {
 
 
     static sendEmailVerification(req: Request, res: Response) {
-        const code = req.query.code;
+        const code : any = req.query.code;
         const email = req.query.email;
         if (!code) {
             res.status(500).json({

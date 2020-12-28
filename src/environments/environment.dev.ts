@@ -2,7 +2,7 @@ import {Environment} from "./environment.interface";
 
 export  const environment :Environment =  {
     production : false,
-    db_url: 'mongodb+srv://abc:shagun@cluster0.wlpff.mongodb.net/test?retryWrites=true&w=majority'
+    db_url: 'mongodb+srv://abc:shagaun@cluster0.wlpff.mongodb.net/test?retryWrites=true&w=majority'
 };
 
 
